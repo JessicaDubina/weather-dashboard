@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <!--bootstrap and stylesheet links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+    <header class="container-fluid">
+        <h2>Weather Dashboard</h2>
+    </header>
+    <main>
+        
+        <div class="row">
+            <!--search side bar-->
+            <div class="col-3">side bar
+                <!--search bar-->
+                <h3>Search for a City:</h3>
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container">
+                      <form class="d-flex" role="search">
+                        <input class="form-control col-3" type="search" placeholder="Enter a City" aria-label="Search">
+                        <button class="btn col-3" type="submit">Search</button>
+                      </form>
+                    </div>
+                  </nav>
+                <!--search history diplay-->
+                <div>history</div>
+            </div>
+            <!--container for city display and forecast-->
+            <div class="col-9">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">City</h3>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h3>5 Day Forecast:</h3>
+                    <div class="row">
+                        <div class="card col-2">day 1</div>
+                        <div class="card col-2">day 2</div>
+                        <div class="card col-2">day 3</div>
+                        <div class="card col-2">day 4</div>
+                        <div class="card col-2">day 5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
     
     <script src="./assets/index.js"></script>
 </body>

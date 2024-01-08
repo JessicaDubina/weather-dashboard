@@ -16,22 +16,28 @@
         
         <div class="row">
             <!--search side bar-->
-            <div class="col-3">side bar
-                <!--search bar-->
+            <div class="col-3 my-3 px-3">
                 <h3>Search for a City:</h3>
-                <nav class="navbar bg-body-tertiary">
+                <nav class="navbar border-bottom border-2">
                     <div class="container">
-                      <form class="d-flex" role="search">
+                      <form class="d-flex gap-3" role="search">
                         <input class="form-control col-3" type="search" placeholder="Enter a City" aria-label="Search">
-                        <button class="btn col-3" type="submit">Search</button>
+                        <button class="btn col-3 border rounded" type="submit">Search</button>
                       </form>
                     </div>
                   </nav>
                 <!--search history diplay-->
-                <div>history</div>
+                <div>
+                    <div class="list-group mt-3 gap-3">
+                        <button type="button" class="list-group-item list-group-item-action border rounded">History button</button>
+                        <button type="button" class="list-group-item list-group-item-action border rounded">A second button item</button>
+                        <button type="button" class="list-group-item list-group-item-action border rounded">A third button item</button>
+                        <button type="button" class="list-group-item list-group-item-action border rounded">A fourth button item</button>
+                      </div>
+                </div>
             </div>
             <!--container for city display and forecast-->
-            <div class="col-9">
+            <div class="col-9 my-3">
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
@@ -42,14 +48,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
-                    <h3>5 Day Forecast:</h3>
+                <div class="row">
+                    <h4 class="row p-3">5 Day Forecast:</h3>
                     <div class="row">
-                        <div class="card col-2">day 1</div>
-                        <div class="card col-2">day 2</div>
-                        <div class="card col-2">day 3</div>
-                        <div class="card col-2">day 4</div>
-                        <div class="card col-2">day 5</div>
+                        <div class="card col-2 mx-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 1</h3>
+                                <p class="card-text">Temp</p>
+                                <p class="card-text">Wind</p>
+                                <p class="card-text">Humidity</p>
+                            </div>
+                        </div>
+                        <div class="card col-2 mx-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 2</h3>
+                                <p class="card-text">Temp</p>
+                                <p class="card-text">Wind</p>
+                                <p class="card-text">Humidity</p>
+                            </div>
+                        </div>
+                        <div class="card col-2 mx-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 3</h3>
+                                <p class="card-text">Temp</p>
+                                <p class="card-text">Wind</p>
+                                <p class="card-text">Humidity</p>
+                            </div>
+                        </div>
+                        <div class="card col-2 mx-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 4</h3>
+                                <p class="card-text">Temp</p>
+                                <p class="card-text">Wind</p>
+                                <p class="card-text">Humidity</p>
+                            </div>
+                        </div>
+                        <div class="card col-2 mx-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Day 5</h3>
+                                <p class="card-text">Temp</p>
+                                <p class="card-text">Wind</p>
+                                <p class="card-text">Humidity</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,10 @@
 const searchEl = $("input");
 const searchBtn = $("#search-submit-btn");
 const sideBarEl = $("#side-bar");
+let cityName = $("#selected-city");
+let todayTemp = $("#today-temp");
+let todayWind = $("#today-wind");
+let todayHumidity = $("#today-humidity");
 
 
 
@@ -17,6 +21,7 @@ const newCitySearch = (event) => {
             let lat = result[0].lat;
             let lon = result[0].lon;
             retrieveForecast(lat, lon);
+            $(searchBtn).off();
         }
     })
 }
@@ -29,7 +34,12 @@ const retrieveForecast = (lat, lon) => {
         url: forecastUrl, 
         success: function(result) {
             console.log(result);
+            debugger
             //retireve data and print it to the dashboard
+            cityName.text(result.city.name + " " + result.list[0].dt_txt.slice(0,10));
+            todayTemp.text(result.list[0].main.temp + " \u00B0F");
+            todayWind.text(result.list[0].wind.speed + " MPH");
+            todayHumidity.text(result.list[0].main.humidity + " %");
         }
     })
 }    

@@ -7,11 +7,21 @@ const sideBarEl = $("#side-bar");
 
 //set event handler for submit button
 const newCitySearch = (event) => {
-    let newUserInput = searchEl.val();
-    //TODO: plug into geocode API
+    event.preventDefault();
+
+    let newUserInput = searchEl.val().trim();
+    let geoApiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + apiKey;
+    console.log(geoApiUrl);
+    $.ajax({url: geoApiUrl, success: function(result){
+        console.log(result);
+        let lat = result[0].lat;
+        let lon = result[0].lon;
+        console.log(lat, lon);
+    }})
 }
 
-searchBtn.on("click", newCitySearch);
+$(searchBtn).on("click", newCitySearch);
+
 
 
 //TODO: set event handler for any button inside the side bar

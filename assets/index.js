@@ -11,28 +11,32 @@ const newCitySearch = (event) => {
 
     let newUserInput = searchEl.val().trim();
     let geoApiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + apiKey;
-    console.log(geoApiUrl);
-    $.ajax({url: geoApiUrl, success: function(result){
-        console.log(result);
-        let lat = result[0].lat;
-        let lon = result[0].lon;
-        console.log(lat, lon);
-    }})
+    $.ajax({
+        url: geoApiUrl, 
+        success: function(result) {
+            let lat = result[0].lat;
+            let lon = result[0].lon;
+            retrieveForecast(lat, lon);
+        }
+    })
 }
 
 $(searchBtn).on("click", newCitySearch);
 
-
+const retrieveForecast = (lat, lon) => {
+    let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey +'&units=imperial&lang=en';
+    $.ajax({
+        url: forecastUrl, 
+        success: function(result) {
+            console.log(result);
+            //retireve data and print it to the dashboard
+        }
+    })
+}    
 
 //TODO: set event handler for any button inside the side bar
 
 
-//TODO: geocode API call for lat/lon of city
-    //fetch(http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key})
-
-
-    //let lat
-    //let lon
 
 
 

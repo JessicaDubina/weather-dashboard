@@ -25,7 +25,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         let newUserInput = searchEl.val().trim();
-        let geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + apiKey;
+        let geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + "6eb2a60c8ef2629298c5c56ce13078f3";
         $.ajax({
             url: geoApiUrl, 
             success: function(result) {
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     //function to retrieve the forecast data based on the provided coords
     const retrieveForecast = (lat, lon) => {
-        let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey +'&units=imperial&lang=en';
+        let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + "6eb2a60c8ef2629298c5c56ce13078f3" +'&units=imperial&lang=en';
         $.ajax({
             url: forecastUrl, 
             success: function(result) {

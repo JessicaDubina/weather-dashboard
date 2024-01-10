@@ -17,7 +17,7 @@ $(document).ready(function () {
         let dataValRemaining = city.slice(1)
         let newCity = dataValFirst + dataValRemaining
         localStorage.setItem(newCity, JSON.stringify({"lat": lat, "lon": lon}));
-        addNewCity();
+        addNewCity(city);
     }
 
     //function to retreive coordinates for a new entered city and use them to retrieve the forecast data
@@ -68,6 +68,7 @@ $(document).ready(function () {
 
     //add new city input from search bar to historical list
     const addNewCity = (newCity) => {
+        debugger
         const newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded">');
         newCityBtn.text(newCity);
         newCityBtn.attr("id", newCity);

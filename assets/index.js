@@ -2,6 +2,8 @@
 const searchEl = $("input");
 const searchBtn = $("#search-submit-btn");
 const sideBarEl = $("#side-bar");
+const fiveDayForecast = $("#5-day-forecast").children();
+
 let cityName = $("#selected-city");
 let todayTemp = $("#today-temp");
 let todayWind = $("#today-wind");
@@ -34,15 +36,28 @@ const retrieveForecast = (lat, lon) => {
         url: forecastUrl, 
         success: function(result) {
             console.log(result);
-            debugger
             //retireve data and print it to the dashboard
             cityName.text(result.city.name + " " + result.list[0].dt_txt.slice(0,10));
             todayTemp.text(result.list[0].main.temp + " \u00B0F");
             todayWind.text(result.list[0].wind.speed + " MPH");
             todayHumidity.text(result.list[0].main.humidity + " %");
+        
+            //Apply dates, temps to 5 day forecast
+            console.log(fiveDayForecast);
+            for(i = 0; i < fiveDayForecast.length; i++) {
+                let nextDay = Number((i + 1) * 8 - 1);
+                let nextDayDate = $(fiveDayForecast[i]).children().children("h5");
+                let nextDayTemp = $(fiveDayForecast[i]).children().children(".temp");
+                let nextDayWind = $(fiveDayForecast[i]).children().children(".wind");
+                let nextDayHumidity = $(fiveDayForecast[i]).children().children(".humidity");
+                nextDayDate.text(result.list[nextDay].dt_txt.slice(0,10));
+                nextDayTemp.text(result.list[nextDay].main.temp  + " \u00B0F");
+                nextDayWind.text(result.list[nextDay].wind.speed + " MPH");
+                nextDayHumidity.text(result.list[nextDay].main.humidity + " %");
+            }
         }
     })
-}    
+}   
 
 //TODO: set event handler for any button inside the side bar
 

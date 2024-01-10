@@ -68,8 +68,7 @@ $(document).ready(function () {
 
     //add new city input from search bar to historical list
     const addNewCity = (newCity) => {
-        debugger
-        const newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded">');
+        const newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded px-3 bg-secondary opacity-75 text-white">');
         newCityBtn.text(newCity);
         newCityBtn.attr("id", newCity);
         newCityBtn.clone().appendTo(historicalCityList);
@@ -82,7 +81,7 @@ $(document).ready(function () {
             return
         } else {
             for (i = 0; i < localStorage.length; i++) {
-                let newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded">');
+                let newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded bg-secondary opacity-75 text-white">');
                 newCityBtn.text(localStorage.key(i));
                 newCityBtn.attr("id", localStorage.key(i));
                 newCityBtn.clone().appendTo(historicalCityList);

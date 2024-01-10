@@ -7,8 +7,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: cornflowerblue;
-    color: white;
 }
 
 form {

@@ -9,26 +9,26 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <header class="container-fluid">
+    <header class="container-fluid bg-info text-white">
         <h2>Weather Dashboard</h2>
     </header>
     <main>
         
         <div class="row">
             <!--search side bar-->
-            <div class="col-3 my-3 px-3" id="side-bar">
-                <h3>Search for a City:</h3>
+            <div class="col-3 my-3" id="side-bar">
+                <h3 class="px-3">Search for a City:</h3>
                 <nav class="navbar border-bottom border-2">
                     <div class="container">
                       <form class="d-flex gap-3" role="search">
-                        <input class="form-control col-3" type="search" placeholder="Enter a City" aria-label="Search">
-                        <button class="btn col-3 border rounded" id="search-submit-btn" type="submit">Search</button>
+                        <input class="form-control col-3 ms-1" type="search" placeholder="Enter a City" aria-label="Search">
+                        <button class="btn col-3 border rounded text-center w-100 ms-1 mb-2 bg-info text-white" id="search-submit-btn" type="submit">Search</button>
                       </form>
                     </div>
                 </nav>
                 <!--search history diplay-->
                 <div>
-                    <div class="list-group mt-3 gap-3" id="historical-city-list"></div>
+                    <div class="list-group mt-3 ms-3 me-2 gap-3 text-center" id="historical-city-list"></div>
                 </div>
             </div>
             <!--container for city display and forecast-->
@@ -46,7 +46,7 @@
                 <div class="row">
                     <h4 class="row p-3">5 Day Forecast:</h3>
                     <div class="row" id="5-day-forecast">
-                        <div class="card col-2 mx-3">
+                        <div class="card col-2 mx-3 bg-info text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Day 1</h3>
                                 <p class="card-text temp">Temp</p>
@@ -54,7 +54,7 @@
                                 <p class="card-text humidity">Humidity</p>
                             </div>
                         </div>
-                        <div class="card col-2 mx-3">
+                        <div class="card col-2 mx-3 bg-info text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Day 2</h3>
                                 <p class="card-text temp">Temp</p>
@@ -62,7 +62,7 @@
                                 <p class="card-text humidity">Humidity</p>
                             </div>
                         </div>
-                        <div class="card col-2 mx-3">
+                        <div class="card col-2 mx-3 bg-info text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Day 3</h3>
                                 <p class="card-text temp">Temp</p>
@@ -70,7 +70,7 @@
                                 <p class="card-text humidity">Humidity</p>
                             </div>
                         </div>
-                        <div class="card col-2 mx-3">
+                        <div class="card col-2 mx-3 bg-info text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Day 4</h3>
                                 <p class="card-text temp">Temp</p>
@@ -78,7 +78,7 @@
                                 <p class="card-text humidity">Humidity</p>
                             </div>
                         </div>
-                        <div class="card col-2 mx-3">
+                        <div class="card col-2 mx-3 bg-info text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Day 5</h3>
                                 <p class="card-text temp">Temp</p>

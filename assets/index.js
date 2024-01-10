@@ -4,22 +4,23 @@ const searchBtn = $("#search-submit-btn");
 const sideBarEl = $("#side-bar");
 const fiveDayForecast = $("#5-day-forecast").children();
 const historicalCityList = $("#historical-city-list");
+const histCityBtn = $('<button type="button" class="list-group-item list-group-item-action border rounded">');
 
-let cityName = $("#selected-city");
-let todayTemp = $("#today-temp");
-let todayWind = $("#today-wind");
-let todayHumidity = $("#today-humidity");
+const cityName = $("#selected-city");
+const todayTemp = $("#today-temp");
+const todayWind = $("#today-wind");
+const todayHumidity = $("#today-humidity");
 
-//function to take (city, let, lon) and store in localstorage and create/append new history button
+//function to take (city, let, lon) and store in localstorage
 const setHistoricalCity = (city, lat, lon) => {
-    let newCityBtn = $('<button type="button" class="list-group-item list-group-item-action border rounded">').appendTo(historicalCityList);
     let dataValFirst = city.charAt(0).toUpperCase();
     let dataValRemaining = city.slice(1)
-    newCityBtn.text(dataValFirst + dataValRemaining);
-    localStorage.setItem(newCityBtn.text, JSON.stringify({"lat": lat, "lon": lon}));
+    let newCity = dataValFirst + dataValRemaining
+    localStorage.setItem(newCity, JSON.stringify({"lat": lat, "lon": lon}));
+    retrieveStorage();
 }
 
-//function to retreive coordinates for a new entered city and use them to retireve the forecast data
+//function to retreive coordinates for a new entered city and use them to retrieve the forecast data
 const newCitySearch = (event) => {
     event.preventDefault();
 
@@ -65,6 +66,20 @@ const retrieveForecast = (lat, lon) => {
         }
     })
 }   
+
+//retrieve localstorage and update history buttons accordingly
+const retrieveStorage = () => {
+    if (localStorage.length === 0){
+        return
+    } else {
+        for (i = 0; i < localStorage.length; i++) {
+            let newCityBtn = histCityBtn;
+            newCityBtn.text(localStorage.key(i));
+            newCityBtn.clone().appendTo(historicalCityList);
+            console.log (newCityBtn.text());
+        }
+    }
+}
 
 //TODO: set event handler for any button inside the side bar
 

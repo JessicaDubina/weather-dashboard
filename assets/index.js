@@ -25,7 +25,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         let newUserInput = searchEl.val().trim();
-        let geoApiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + apiKey;
+        let geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + newUserInput + '&limit=1&appid=' + apiKey;
         $.ajax({
             url: geoApiUrl, 
             success: function(result) {

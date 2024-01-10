@@ -4,7 +4,8 @@ const searchBtn = $("#search-submit-btn");
 const sideBarEl = $("#side-bar");
 const fiveDayForecast = $("#5-day-forecast").children();
 const historicalCityList = $("#historical-city-list");
-const histCityBtn = $('<button type="button" class="list-group-item list-group-item-action border rounded">');
+
+const histCityBtn = $(".history-button");
 
 const cityName = $("#selected-city");
 const todayTemp = $("#today-temp");
@@ -17,7 +18,7 @@ const setHistoricalCity = (city, lat, lon) => {
     let dataValRemaining = city.slice(1)
     let newCity = dataValFirst + dataValRemaining
     localStorage.setItem(newCity, JSON.stringify({"lat": lat, "lon": lon}));
-    retrieveStorage();
+    //retrieveStorage(); - turn this into an init button create for new entry
 }
 
 //function to retreive coordinates for a new entered city and use them to retrieve the forecast data
@@ -38,7 +39,7 @@ const newCitySearch = (event) => {
     })
 }
 
-$(searchBtn).on("click", newCitySearch);
+
 
 const retrieveForecast = (lat, lon) => {
     let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey +'&units=imperial&lang=en';
@@ -73,14 +74,33 @@ const retrieveStorage = () => {
         return
     } else {
         for (i = 0; i < localStorage.length; i++) {
-            let newCityBtn = histCityBtn;
+            let newCityBtn = $('<button type="button" class="history-button list-group-item list-group-item-action border rounded">');
             newCityBtn.text(localStorage.key(i));
+            newCityBtn.attr("id", localStorage.key(i));
             newCityBtn.clone().appendTo(historicalCityList);
-            console.log (newCityBtn.text());
+            $(`#${localStorage.key(i)}`).on("click", grabCityCoords);
+
         }
+        //need to clear before refresh with new list
+        //add clear button
     }
 }
 
-//TODO: set event handler for any button inside the side bar
 
+
+//TODO: set event handler for any button inside the side bar
+const grabCityCoords = (event) => {
+    //console.log(event.target);
+    let city = $(event.target).attr("id");
+    let result = JSON.parse(localStorage.getItem(city));
+    let lat = result.lat;
+    let lon = result.lon;
+    console.log(lat, lon);
+    retrieveForecast(lat, lon);
+}
+
+retrieveStorage();
+
+$(searchBtn).on("click", newCitySearch);
+//$(histCityBtn).on("click", grabCityCoords);
     

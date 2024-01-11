@@ -10,6 +10,8 @@ $(document).ready(function () {
     const todayTemp = $("#today-temp");
     const todayWind = $("#today-wind");
     const todayHumidity = $("#today-humidity");
+    const todayIcon = $("#today-icon");
+    const todayUv = $("#today-uv");
 
     //function to take (city, let, lon) and store in localstorage
     const setHistoricalCity = (city, lat, lon) => {
@@ -45,7 +47,9 @@ $(document).ready(function () {
             url: forecastUrl, 
             success: function(result) {
                 //retrieve data and print it to the dashboard
+                console.log(result);
                 cityName.text(result.city.name + " " + result.list[0].dt_txt.slice(0,10));
+                $(todayIcon).attr("src", "https://openweathermap.org/img/wn/" + result.list[0].weather[0].icon + "@2x.png");
                 todayTemp.text("Temp: " + result.list[0].main.temp + " \u00B0F");
                 todayWind.text("Wind: " + result.list[0].wind.speed + " MPH");
                 todayHumidity.text("Humidity: " + result.list[0].main.humidity + " %");
@@ -54,10 +58,12 @@ $(document).ready(function () {
                 for(i = 0; i < fiveDayForecast.length; i++) {
                     let nextDay = Number((i + 1) * 8 - 1);
                     let nextDayDate = $(fiveDayForecast[i]).children().children("h5");
+                    let nextDayIcon = $(fiveDayForecast[i]).children().children("img")
                     let nextDayTemp = $(fiveDayForecast[i]).children().children(".temp");
                     let nextDayWind = $(fiveDayForecast[i]).children().children(".wind");
                     let nextDayHumidity = $(fiveDayForecast[i]).children().children(".humidity");
                     nextDayDate.text(result.list[nextDay].dt_txt.slice(0,10));
+                    $(nextDayIcon).attr("src", "https://openweathermap.org/img/wn/" + result.list[nextDay].weather[0].icon + ".png");
                     nextDayTemp.text("Temp: " + result.list[nextDay].main.temp  + " \u00B0F");
                     nextDayWind.text("Wind: " + result.list[nextDay].wind.speed + " MPH");
                     nextDayHumidity.text("Humidity: " + result.list[nextDay].main.humidity + " %");

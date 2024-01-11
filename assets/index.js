@@ -46,9 +46,9 @@ $(document).ready(function () {
             success: function(result) {
                 //retrieve data and print it to the dashboard
                 cityName.text(result.city.name + " " + result.list[0].dt_txt.slice(0,10));
-                todayTemp.text(result.list[0].main.temp + " \u00B0F");
-                todayWind.text(result.list[0].wind.speed + " MPH");
-                todayHumidity.text(result.list[0].main.humidity + " %");
+                todayTemp.text("Temp: " + result.list[0].main.temp + " \u00B0F");
+                todayWind.text("Wind: " + result.list[0].wind.speed + " MPH");
+                todayHumidity.text("Humidity: " + result.list[0].main.humidity + " %");
             
                 //Apply result data to 5 day forecast to 5 day forecast
                 for(i = 0; i < fiveDayForecast.length; i++) {
@@ -58,9 +58,9 @@ $(document).ready(function () {
                     let nextDayWind = $(fiveDayForecast[i]).children().children(".wind");
                     let nextDayHumidity = $(fiveDayForecast[i]).children().children(".humidity");
                     nextDayDate.text(result.list[nextDay].dt_txt.slice(0,10));
-                    nextDayTemp.text(result.list[nextDay].main.temp  + " \u00B0F");
-                    nextDayWind.text(result.list[nextDay].wind.speed + " MPH");
-                    nextDayHumidity.text(result.list[nextDay].main.humidity + " %");
+                    nextDayTemp.text("Temp: " + result.list[nextDay].main.temp  + " \u00B0F");
+                    nextDayWind.text("Wind: " + result.list[nextDay].wind.speed + " MPH");
+                    nextDayHumidity.text("Humidity: " + result.list[nextDay].main.humidity + " %");
                 }
             }
         })

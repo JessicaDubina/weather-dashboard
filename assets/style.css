@@ -12,3 +12,7 @@ header {
 form {
     flex-wrap: wrap;
 }
+
+p {
+    font-size: 15px;
+}

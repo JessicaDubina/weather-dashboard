@@ -11,7 +11,6 @@ $(document).ready(function () {
     const todayWind = $("#today-wind");
     const todayHumidity = $("#today-humidity");
     const todayIcon = $("#today-icon");
-    const todayUv = $("#today-uv");
 
     //function to take (city, let, lon) and store in localstorage
     const setHistoricalCity = (city, lat, lon) => {
@@ -47,7 +46,6 @@ $(document).ready(function () {
             url: forecastUrl, 
             success: function(result) {
                 //retrieve data and print it to the dashboard
-                console.log(result);
                 cityName.text(result.city.name + " " + result.list[0].dt_txt.slice(0,10));
                 $(todayIcon).attr("src", "https://openweathermap.org/img/wn/" + result.list[0].weather[0].icon + "@2x.png");
                 todayTemp.text("Temp: " + result.list[0].main.temp + " \u00B0F");
